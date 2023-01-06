@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% if votes %}
+    <div style="width: 40%!important; text-align: center; align-self: auto">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Party</th>
+                <th scope="col">Counts</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Construct the rest of courses here -->
+            {% for vote in votes %}
+            <tr>
+                <td>{{ vote["_id"] }}</td>
+                <td>{{ vote['count'] }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
+
+    <div>
+        <table class="table table-hover" >
+            <thead>
+            <tr>
+                <th scope="col">UserName</th>
+                <th scope="col">Prev. Hash</th>
+                <th scope="col">cur. Hash</th>
+                <th scope="col">Timestamp</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Construct the rest of courses here -->
+            {% for vote in totalVotes %}
+            <tr>
+                <td scope='row'>{{ vote["name"] }}</td>
+                <td style="max-width:400px!important; overflow-wrap: break-word ">{{ vote["prevhash"] }}</td>
+                <td style="max-width:400px!important;overflow-wrap: break-word">{{ vote["curhash"] }}</td>
+                <td>{{ vote["timestamp"] }}</td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

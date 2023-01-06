@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Welcome to Election Commission of India</h1>
+
+            {% if session['username'] %}
+                <h3>Let's get started.</h3>
+            {% else %}
+                <p>Already registered? <a href="{{url_for('login') }}">Login</a></p>
+            {% endif %}
+
+            <div style="text-align:left;">
+                <h2>What Election Commission?</h2>
+                
+                <p>The Election Commission of India is a permanent and an independent body established by the Constitution of India directly to ensure free and fair elections in the country. Article 324 of the Constitution provides that the power of superintendence, direction and control of elections to parliament, state legislatures, the office of the president of India and the office of vice-president of India shall be vested in the election commission. Thus, the Election Commission is an all-India body in the sense that it is common to both the Central government and the state governments. </p>
+
+                <p>The body of administers elections to the Lok Sabha, Rajya Sabha, State Legislative Assemblies, State Legislative Councils and the offices of the President and Vice President of the country. The Election Commission operates under the authority of Constitution per Article 324, and subsequently enacted Representation of the People Act. The commission has the powers under the Constitution, to act in an appropriate manner when the enacted laws make insufficient provisions to deal with a given situation in the conduct of an election. Being a constitutional authority, Election Commission is amongst the few institutions which function with both autonomy and freedom, along with the country’s higher judiciary, the Union Public Service Commission and the Comptroller and Auditor General of India.It is a permanent constitutional body. </p>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

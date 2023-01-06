@@ -1,0 +1,58 @@
+    {% extends "layout.html" %}
+    
+    {% block content %}
+
+    <!--  Display the Term and Year here --->
+    <h3>Term: {{ term }} Election</h3>
+    <br>
+    <br>
+        {% if session['username'] == "Admin" %}
+        <form action="{{url_for('add')}}" method="POST">
+            <button>ADD Candidate</button>
+        </form>
+        <br>
+        <br>
+        {% endif %}
+
+
+    <div style="margin-bottom: 12rem!important;">
+        <table class="table table-hover" >
+            <thead>
+            <tr>
+                <th scope="col">Constituency ID</th>
+                <th scope="col">Constituency</th>
+                <th scope="col">Candidate</th>
+                <th scope="col">Party</th>
+                <th scope="col">Term</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Construct the rest of courses here -->
+            {% for data in constituencyData %}
+            <tr>
+                <td scope='row'>{{ data["constituencyID"] }}</td>
+                <td>{{ data["constituency"] }}</td>
+                <td>{{ data["candidate"] }}</td>
+                <td>{{ data["party"] }}</td>
+                <td>{{ term }}</td>
+                <td>
+                    {% if session['username'] and session['username'] != "Admin" %}
+                    <form action="{{url_for('userpage')}}" method="POST">
+                        <input type="hidden" name="constituencyID" value="{{data['constituencyID']}}">
+                        <input type="hidden" name="constituency" value="{{data['constituencyName']}}">
+                        <input type="hidden" name="candidate" value="{{data['candidate']}}">
+                        <input type="hidden" name="party" value="{{data['party']}}">
+                        <input type="hidden" name="term" value="{{term}}">
+                        <button>Vote</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

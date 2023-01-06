@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<br>
+<br>
+
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            {% if not voted %}
+                <h1>You are not voted yet!!</h1>
+            {% else %}
+                <h2 style="margin-bottom: 20px; background: #0dea5b; padding: 5px">You are Already Voted to: {{ voted["candidate"] }}</h2>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Candidate</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!-- Construct the rest of courses here -->
+                    {% for vote in totalVotes %}
+                    <tr>
+                        <td>{{ vote["name"] }}</td>
+                        <td>{{ vote["timestamp"] }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}

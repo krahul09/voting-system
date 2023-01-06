@@ -1,0 +1,54 @@
+
+    {% extends "layout.html" %}
+   
+    {% block content %}
+    
+    <div class="container">
+         <form name="constituency" action="" method="post" novalidate>
+        <fieldset class="form-group">
+            {{ form.hidden_tag() }}
+
+
+                <p> {{ form.constituencyID.label }}<br>
+                    {{ form.constituencyID }}
+                    {% for error in form.constituencyID.errors %}
+                     <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p> {{ form.constituency.label }}<br>
+                    {{ form.constituency }}
+                    {% for error in form.constituency.errors %}
+                     <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p> {{ form.candidate.label }}<br>
+                    {{ form.candidate }}
+                    {% for error in form.candidate.errors %}
+                     <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p> {{ form.party.label }}<br>
+                    {{ form.party }}
+                    {% for error in form.party.errors %}
+                     <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+            
+                <p> {{ form.term.label }}<br>
+                    {{ form.term }}
+                    {% for error in form.term.errors %}
+                     <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+            
+                <p> 
+                    {{ form.submit() }}
+                </p>
+            
+        </fieldset>
+        </form>
+    </div>
+    {% endblock %}
